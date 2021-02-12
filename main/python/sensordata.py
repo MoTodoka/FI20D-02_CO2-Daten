@@ -18,6 +18,7 @@ def read_sensor_data_from_file_as_list(path_to_filename):
     file = open(path_to_filename, 'r')
     locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
     file_content_list = [locale.atof(line.strip()) for line in file]
+    file.close()
     return file_content_list
 
 
@@ -25,9 +26,8 @@ class SensorData:
     path_to_filename: str
     sensor_data_list: []
 
-    def __init__(self, path_to_filename):
-        self.path_to_filename = path_to_filename
-        self.sensor_data_list = read_sensor_data_from_file_as_list(self.path_to_filename)
+    def __init__(self, sensor_data_list):
+        self.sensor_data_list = sensor_data_list
 
     def is_valid(self):
         sensor_data_list = self.sensor_data_list
