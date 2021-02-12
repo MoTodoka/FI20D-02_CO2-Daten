@@ -119,6 +119,8 @@ sensor_data = read_sensor_data_from_file_as_list(path_to_data)
 # Validieren der Messdaten
 if is_sensor_data_valid(sensor_data):
     lessons = get_sensor_data_per_lesson(sensor_data)
+    file = open("result.txt", "w")
+    file.write(f"Auswertung:")
     for idx in range(len(lessons)):
-        print(f"Stunde {idx + 1}:")
-        print(get_result_string(lessons[idx]))
+        file.write(f"\nStunde {idx + 1}:")
+        file.write(get_result_string(lessons[idx]))
