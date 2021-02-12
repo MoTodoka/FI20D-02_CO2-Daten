@@ -7,6 +7,24 @@ def get_result_string(result):
     return result
 
 
+def get_lesson_list(sensor_data_list, values_per_lesson=90 * 6, values_per_pause=20 * 6):
+    lessons = [Lesson()]
+    pause_timer = 0
+
+    for sensor_value in sensor_data_list:
+        lesson = lessons[len(lessons) - 1]
+        if len(lesson) < values_per_lesson:
+            lesson.append(sensor_value)
+        else:
+            if pause_timer < values_per_pause - 1:
+                pause_timer += 1
+            else:
+                lessons.append(Lesson())
+                pause_timer = 0
+
+    return lessons
+
+
 class Lesson:
     sensor_data_list: list
 

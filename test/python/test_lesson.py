@@ -45,3 +45,13 @@ class TestLesson(TestCase):
                           '0.0% der Messungen überschritten.\nBitte die Lehrkraft informieren\n'
         actual_result = get_result_string(result)
         self.assertEqual(expected_result, actual_result)
+
+    def test_get_lesson_list(self):
+        sensor_data_list = []
+        for idx in range(1500):
+            sensor_data_list.append(idx)
+        lessons = get_lesson_list(sensor_data_list)
+        self.assertEqual(lessons[1].sensor_data_list[0], 90 * 6 + 20 * 6)
+        self.assertEqual(len(lessons[0]), 90 * 6)
+
+
