@@ -102,7 +102,7 @@ def get_result_string(sensor_data):
         if sensor_data[idx] > limit:
             over_limit_counter += 1
 
-    result = f"Höchstwert {max_value} wurde erreicht nach {max_index / 6}.\n"
+    result = f"Höchstwert {max_value} wurde erreicht nach {max_index / 6} Minuten.\n"
     result += f"Der Richtwert {limit}ppm wurde bei {over_limit_counter / len(sensor_data) * 100}% der Messungen überschritten.\n"
     if over_limit_counter > 18:
         result += f"Bitte die Lehrkraft informieren\n"
