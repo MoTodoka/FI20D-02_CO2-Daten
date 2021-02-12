@@ -53,5 +53,3 @@ class TestLesson(TestCase):
         lessons = get_lesson_list(sensor_data_list)
         self.assertEqual(lessons[1].sensor_data_list[0], 90 * 6 + 20 * 6)
         self.assertEqual(len(lessons[0]), 90 * 6)
-
-
