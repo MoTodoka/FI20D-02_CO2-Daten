@@ -1,3 +1,12 @@
+def get_result_string(result):
+    critical_value, max_value, time_of_max_value_in_minutes, percentage, warn_teacher = result
+    result = f"Höchstwert {max_value} wurde erreicht nach {time_of_max_value_in_minutes} Minuten.\n"
+    result += f"Der Richtwert {critical_value}ppm wurde bei {percentage}% der Messungen überschritten.\n"
+    if warn_teacher:
+        result += f"Bitte die Lehrkraft informieren\n"
+    return result
+
+
 class Lesson:
     sensor_data_list: list
 
@@ -26,11 +35,3 @@ class Lesson:
         warn_teacher = over_limit_counter > critical_minutes * values_per_minute
 
         return critical_value, max_value, time_of_max_value_in_minutes, percentage, warn_teacher
-
-    def get_result_string(self):
-        critical_value, max_value, time_of_max_value_in_minutes, percentage, warn_teacher = self.get_result()
-        result = f"Höchstwert {max_value} wurde erreicht nach {time_of_max_value_in_minutes} Minuten.\n"
-        result += f"Der Richtwert {critical_value}ppm wurde bei {percentage}% der Messungen überschritten.\n"
-        if warn_teacher:
-            result += f"Bitte die Lehrkraft informieren\n"
-        return result

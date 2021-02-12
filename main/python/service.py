@@ -1,6 +1,6 @@
 import sys
 
-from lesson import Lesson
+from lesson import Lesson, get_result_string
 from sensordata import SensorData, read_sensor_data_from_file_as_list
 
 
@@ -32,7 +32,7 @@ def main(path_to_file, path_to_result):
         for lesson in lessons:
             lesson_counter += 1
             file.write(f"\nStunde {lesson_counter}:")
-            file.write(lesson.get_result_string())
+            file.write(get_result_string(lesson.get_result()))
         file.close()
 
 
